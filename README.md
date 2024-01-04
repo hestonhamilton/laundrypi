@@ -7,6 +7,10 @@ A small project for sending alerts when laundry is done.
 - 16GB microSD card
 - Raspiaudio Mic+ v2 audio hat
 
+## Other requirements
+- Python
+- sudo/root permissions
+
 ## Preparations
 1. Flash your microSD card using Raspberry Pi Imager (which you can install [here](https://www.raspberrypi.com/software/)).
 2. Make sure to enable SSH and WiFi, as well as set user credentials during config.
@@ -42,3 +46,10 @@ wget -O - test.raspiaudio.com | bash
 
 Press the onboard button on the hat and you should hear "front left", then "front right". This confirms the hat was installed correctly.
 
+Instructions for modifying the gain and other finetuning can be found in the forum post from raspiaudio.
+
+## Recording audio
+
+```python
+pip install sounddevice
+```
