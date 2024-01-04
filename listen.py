@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import os
+import subprocess
 import sounddevice as sd
 import numpy as np
 
@@ -27,10 +29,13 @@ def update_frame_counters(is_above_high, is_below_low, noise_frames, quiet_frame
 
 def sound_event_detected(noise_duration_frames, quiet_duration_frames):
     """Triggers when the noise threshold is exceeded, then falls below another threshold."""
-    noise_duration_seconds = noise_duration_frames / SAMPLING_RATE
-    quiet_duration_seconds = quiet_duration_frames / SAMPLING_RATE
-    print(f"Noise for {noise_duration_seconds} seconds, then quiet for {quiet_duration_seconds} seconds.")
     # Implement notification logic here?
+    wav_file_path = os.path.join(os.path.expanduser('~'), 'success.wav')
+    # Play the .wav file
+    try:
+        subprocess.run(['aplay', wav_file_path], check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Error playing sound: {e}")
 
 def monitor_audio_thresholds():
     noise_frames = 0
