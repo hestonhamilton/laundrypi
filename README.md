@@ -18,7 +18,13 @@ A small project for sending alerts when laundry is done.
 ## Hat Installation
 The majority of this installation will mirror the process given by raspiaudio in their instructions for setting up the mic+ v1 hat, which can be found [here](https://forum.raspiaudio.com/t/mic-installation-guide/17).
 
-First, run a bash script provided by raspiaudio to configure the hat. The source can be found [here](https://raspiaudio.com/s/mic1), and it is encouraged to verify any code personally before executing it.
+First, we will need to add our user to the gpio group:
+```bash
+sudo usermod -aG gpio $USER
+```
+This will allow our user to interact with the pins utilized by the hat.
+
+Next we run a bash script provided by raspiaudio to configure the hat. The source can be found [here](https://raspiaudio.com/s/mic1), and it is encouraged to verify any code personally before executing it.
 
 Run the install script:
 ```bash
