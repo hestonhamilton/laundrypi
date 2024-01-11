@@ -53,3 +53,8 @@ Instructions for modifying the gain and other finetuning can be found in the for
 ```python
 pip install sounddevice
 ```
+
+libportaudio2 is necessary for sounddevice functionality
+```bash
+sudo apt-get install libportaudio2
+```
