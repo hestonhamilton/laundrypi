@@ -30,7 +30,7 @@ def update_frame_counters(is_above_high, is_below_low, noise_frames, quiet_frame
 def sound_event_detected(noise_duration_frames, quiet_duration_frames):
     """Triggers when the noise threshold is exceeded, then falls below another threshold."""
     # Implement notification logic here?
-    wav_file_path = os.path.join(os.path.expanduser('~'), 'success.wav')
+    wav_file_path = os.path.join(os.path.expanduser('~/laundrypi/audio_files'), 'success.wav')
     # Play the .wav file
     try:
         print("Playing success.wav")
