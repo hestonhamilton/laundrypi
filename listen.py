@@ -33,7 +33,7 @@ def sound_event_detected(noise_duration_frames, quiet_duration_frames):
     # Execute cast.py
     try:
         print("Executing cast.py")
-        subprocess.run(['python3', cast_script_path], check=True)
+        subprocess.Popen(['python3', cast_script_path])
     except subprocess.CalledProcessError as e:
         print(f"Error executing script: {e}")
 
