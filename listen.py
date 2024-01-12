@@ -6,8 +6,8 @@ import numpy as np
 
 # Constants
 SAMPLING_RATE = 44100  # Sample rate in Hertz
-THRESHOLD_HIGH = 0.001  # High noise level threshold
-THRESHOLD_LOW = 0.0009  # Low noise level threshold
+THRESHOLD_HIGH = 0.01  # High noise level threshold
+THRESHOLD_LOW = 0.005  # Low noise level threshold
 NOISE_TIME_REQUIRED = 2 * SAMPLING_RATE  # Num frames noise level must be above threshold
 QUIET_TIME_REQUIRED = 2 * SAMPLING_RATE  # Num frames noise level must be below threshold
 
