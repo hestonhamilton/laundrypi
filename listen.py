@@ -22,11 +22,20 @@ def check_thresholds(rms_value):
 def update_frame_counters(is_above_high, is_below_low, noise_frames, quiet_frames, frames):
     """Update frame counters based on threshold checks."""
     if is_above_high:
-        return noise_frames + frames, 0  # Reset quiet counter
-    elif is_below_low:
-        return noise_frames, quiet_frames + frames
+        # Noise detected, increment noise counter
+        noise_frames += frames
+    elif not is_above_high and noise_frames < NOISE_TIME_REQUIRED:
+        # Quiet detected and noise duration is less than 2 seconds, reset noise counter
+        noise_frames = 0
+
+    if is_below_low:
+        # Quiet detected, increment quiet counter
+        quiet_frames += frames
     else:
-        return 0, 0
+        # Noise detected, reset quiet counter
+        quiet_frames = 0
+
+    return noise_frames, quiet_frames
 
 def sound_event_detected(noise_duration_frames, quiet_duration_frames):
     """Triggers when the noise threshold is exceeded, then falls below another threshold."""
