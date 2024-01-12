@@ -6,8 +6,8 @@ import numpy as np
 
 # Constants
 SAMPLING_RATE = 44100  # Sample rate in Hertz
-THRESHOLD_HIGH = 0.01  # High noise level threshold
-THRESHOLD_LOW = 0.005  # Low noise level threshold
+THRESHOLD_HIGH = 0.005 # High noise level threshold
+THRESHOLD_LOW = 0.006  # Low noise level threshold
 NOISE_TIME_REQUIRED = 2 * SAMPLING_RATE  # Num frames noise level must be above threshold
 QUIET_TIME_REQUIRED = 2 * SAMPLING_RATE  # Num frames noise level must be below threshold
 
@@ -24,6 +24,7 @@ def update_frame_counters(is_above_high, is_below_low, noise_frames, quiet_frame
     if is_above_high:
         # Noise detected, increment noise counter
         noise_frames += frames
+        quiet_frames = 0
     elif not is_above_high and noise_frames < NOISE_TIME_REQUIRED:
         # Quiet detected and noise duration is less than 2 seconds, reset noise counter
         noise_frames = 0
@@ -31,9 +32,6 @@ def update_frame_counters(is_above_high, is_below_low, noise_frames, quiet_frame
     if is_below_low:
         # Quiet detected, increment quiet counter
         quiet_frames += frames
-    else:
-        # Noise detected, reset quiet counter
-        quiet_frames = 0
 
     return noise_frames, quiet_frames
 
