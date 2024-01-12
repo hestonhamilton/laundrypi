@@ -26,7 +26,7 @@ if chromecasts:
         media.play()
 
     else:
-        print("No Chromecast with the name " + cast_target + " was found")
+        print(f"No Chromecast with the name {cast_target} was found")
 else:
     print("No Chromecasts found on the network")
 
