@@ -11,7 +11,6 @@ cast_target = "Home group"
 if chromecasts:
     cast = None
     for cc in chromecasts:
-        print(cc.name)
         if cc.name == cast_target:
             cast = cc
             break

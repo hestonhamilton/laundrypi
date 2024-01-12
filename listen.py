@@ -29,14 +29,13 @@ def update_frame_counters(is_above_high, is_below_low, noise_frames, quiet_frame
 
 def sound_event_detected(noise_duration_frames, quiet_duration_frames):
     """Triggers when the noise threshold is exceeded, then falls below another threshold."""
-    # Implement notification logic here?
-    wav_file_path = os.path.join(os.path.expanduser('~/laundrypi/audio_files'), 'success.wav')
-    # Play the .wav file
+    cast_script_path = os.path.join(os.path.expanduser('~/laundrypi'), 'cast.py')
+    # Execute cast.py
     try:
-        print("Playing success.wav")
-        subprocess.run(['aplay', wav_file_path], check=True)
+        print("Executing cast.py")
+        subprocess.run(['python3', cast_script_path], check=True)
     except subprocess.CalledProcessError as e:
-        print(f"Error playing sound: {e}")
+        print(f"Error executing script: {e}")
 
 def monitor_audio_thresholds():
     noise_frames = 0
