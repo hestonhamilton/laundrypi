@@ -23,9 +23,10 @@ def update_frame_counters(is_above_high, is_below_low, noise_frames, quiet_frame
     """Update frame counters based on threshold checks."""
     if is_above_high:
         return noise_frames + frames, 0  # Reset quiet counter
-    if is_below_low:
+    elif is_below_low:
         return noise_frames, quiet_frames + frames
-    return noise_frames, quiet_frames
+    else:
+        return 0, 0
 
 def sound_event_detected(noise_duration_frames, quiet_duration_frames):
     """Triggers when the noise threshold is exceeded, then falls below another threshold."""
